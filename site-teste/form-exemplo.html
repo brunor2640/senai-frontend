@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" onsubmit="return validar()">
+        <label for="">Cursos:</label>
+        <input type="text" name="curso" value="Front-End"><br>
+
+        <label for="">Materia:</label><br>
+        <label for="">Cursos</label><br>
+        <input type="checkbox" id="cbox-html" name="materia" value="html">
+        <label for="cbox-html"> html</label>
+
+        <input type="checkbox" id="cbox-css" name="materia" value="css">
+        <label for="cbox-css"> css</label>
+
+        <input type="checkbox" id="cbox-js" name="materia" value="js">
+        <label for="cbox-js"> java script</label>
+
+        <label for="">Cor</label><br>
+        <input type="color" id="cor" value="#ffffff">
+        <br>
+        <label for="">Modalidade</label>
+        <input type="radio" id="radio-remoto" name="modalidade" value="remoto">
+        <label for="radio-remoto">Remoto</label>
+        <input type="radio" id="radio-presencial" name="modalidade" value="presencial">
+        <label for="radio-presencial">Presencial</label>
+        <br>
+
+
+        <input type="submit" value="Enviar">
+
+    </form>
+    <script>
+        function validar() {
+            let materia = verificarCheck(document.getElementsByName("materia"));
+            // materia = verificarCheck(materia)
+            console.log(materia);
+
+            let modalidade = verificarCheck(document.getElementsByName("modalidade"));
+            console.log(modalidade);
+
+            let cor = document.querySelector("#cor").value;
+            document.querySelector("body").style = "background-color: "+ cor;
+            return false
+        }
+
+        function verificarCheck(itens) {
+            r = [];
+            for (i of itens) {
+                if (i.checked) {
+                    r.push(i.value)
+            }
+        }
+        return r;
+}
+
+    </script>
+</body>
+
+</html>
