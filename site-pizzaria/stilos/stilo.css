@@ -14,6 +14,9 @@
 html{
    font-size: 62.5%;
    overflow-x: hidden;
+   scroll-behavior: smooth;
+   font-family: "Roboto", sans-serif;
+
 }
 
 .content{
@@ -24,7 +27,7 @@ html{
     background-color: #1f1e1f;
     position: fixed;
     align-items: center;
-    font-family: "Roboto", sans-serif;
+    
     /*padding-left: 30rem;*/
 
 }
@@ -215,7 +218,7 @@ border-bottom: 4px solid #ffc506;
 .itens-cardapio{
     width: 80%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 550px));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 450px));
     justify-content: center;
     align-items: center;
     gap: 30px;
@@ -282,4 +285,81 @@ border-bottom: 4px solid #ffc506;
     background-color: #5e5252;
     color: #ffffff;
 
+}
+
+/* section contatos */
+
+.contatos{
+    width: 100%;
+    background-color: #1f1e1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: 1.8rem;
+    padding-bottom: 4rem;
+}
+
+.contatos h3{
+    font-size: 6rem;
+    margin-bottom: 3rem;
+    font-family: 'indie flower', cursive;
+}
+
+.contatos .contatos-secao{
+    display: flex;
+    width: 650px;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+.contatos i{
+    margin-right: 1rem;
+}
+
+.contatos .contatos-secao div:hover{
+    color: #ffc506;
+}
+footer{
+    height: 35px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media(max-width: 1200px){
+    .itens-cardapio{
+        width: 90%;
+    }
+
+    .sobre-nos img{
+        width: 600px;
+       margin-left: -2px;
+    }
+    .main{
+        display: block;
+    }
+}
+
+@media(max-width:980px){
+    html{
+        font-size: 50%;
+    }
+    
+}
+
+@media(max-width: 870px) {
+    .content .list-menu{
+        display: none;
+    }
+
+    .one, .two, .three{
+        width: 100%;
+        height: 4px;
+        color: white;
+        margin: 6px auto;
+    }
+    
 }
