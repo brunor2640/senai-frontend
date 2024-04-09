@@ -1,0 +1,53 @@
+
+
+html{
+    background-color: #141414;
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+body{
+    background-color: black;
+    padding: 30px;
+    width: 300px;
+    border-radius: 10px;
+
+}
+
+
+
+a{
+   background-color: #333333;
+   color: white;
+   text-decoration: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 45px;
+   border-radius: 5px;
+
+}
+a:hover {
+background-color: yellowgreen;
+color: black;
+
+} 
+h2{
+    font-size: 0.8rem;
+    color: yellowgreen;
+}
+
+p{
+    font-size: 0.7rem;
+    color: gray;
+
+}
+h1{
+   font-style: 1.1rem;
+}
+
