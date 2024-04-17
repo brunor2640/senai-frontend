@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tp-br">
+<html lang="pt-br" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,12 @@
 <div class="container-md mt-3">
     <h2>Formulário Cadastro</h2>
     <div class="row">
+        <div class="col-12 ">
+         <div class="form-check form-switch float-end">
+             <input class="form-check-input" type="checkbox" id="darkMode" checked>
+             <label class="form-check-label" for="darkMode">Dark Mode</label>
+         </div>
+        </div>
         <div class="mb-3 col-12">
             <label for="nome">Nome:</label>
             <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" name="nome">
@@ -64,7 +70,7 @@
     <div class="alert alert-danger" id="msg-erro" >
         
     </div>
-    <div id="dados" class="alert alert-preimary"></div>
+    <div id="dados" class="alert alert-primary"></div>
     <button type="submit" class="btn btn-primary float-end" id="enviar">Enviar</button>
     
 </div>
@@ -73,19 +79,15 @@
     let erroNoForm;
     let msgErro = document.getElementById('msg-erro');
     msgErro.style.display  = 'none';
-
+    let listaId = ["nome", "email", "dtNascimento", "escolaridade", "estadoCivil", "senha", "confirmar"];
     function validarForm() {
         erroNoForm = false;
-        validarInput("nome");
-        validarInput("email");
-        validarInput("dtNascimento");
-        validarInput("escolaridade");
-        validarInput("estadoCivil");
-        validarInput("senha");
-        validarInput("confirmar");
+        for (const id of listaId) {
+            validarInput(id);
+        }
         validarSexo();
-        
         console.log(pessoa);
+
         if(erroNoForm){
            msgErro.innerHTML = '<strong>Atenção:</strong>Algum campo não foi preenchido!';
            msgErro.style.display = '';
@@ -96,6 +98,7 @@
 
         
     }
+    
 
     function validarSexo() {
       let stSexo = false;
@@ -127,6 +130,17 @@
 
     }
 
+    function LimparBorda(idItem) {
+        let item = document.getElementById(idItem);
+        item.addEventListener('focus', () => {item.style.border = '';});
+        }
+
+       for (const id of listaId) {
+        LimparBorda(id);
+       }
+        
+      
+
     function validarSenha(){
         let senha = pessoa.senha;
         let confirmar = pessoa.confirmar;
@@ -136,7 +150,7 @@
         }
         else if(senha == confirmar){
            erroNoForm = true;
-           erroNoForm.style.display = 'none';
+           msgErro.style.display = 'none';
         }else{
              msgErro.innerHTML = '<strong>Atenção:</strong>senha  e confirmar senha estão Diferente';
             erroNoForm = false;
@@ -152,12 +166,11 @@
           E-mail: ${pessoa.email}<br>
           Sexo: ${pessoa.sexo}<br>
           Data Nascimento: ${pessoa.dtNascimento}<br>
-          dtNascimento: ${pessoa.dtNascimento}<br>
-          escolaridade: ${pessoa.escolaridade}<br>
-          estadoCivil: ${estadoCivil}
+          Escolaridade: ${pessoa.escolaridade}<br>
+          Estado Civil: ${pessoa.estadoCivil}
          `;
          txt = txt.replaceAll('<br>', '<br><strong>');
-         txt = txt.replaceAll(';', ':</strong>');
+         txt = txt.replaceAll(':', ':</strong>');
          document.querySelector("#dados").innerHTML = txt;
          document.querySelector("#dados").style.display = '';
          
