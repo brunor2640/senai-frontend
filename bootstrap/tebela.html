@@ -40,24 +40,36 @@
             </tr>
         </tbody>
         </table>
+        <ul class="pagination" id="paginacao">
+            
+        </ul>
     </div>
     <script>
+        let dados;
+        let nLinhas = 3;
         let dadosInfo = document.getElementById("dados-info");
-        
-
-       async function buscarNomes(){
+        async function buscarNomes(){
             let retorno = await fetch("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking");
-            let dados = await retorno.json();
-            preencherTabela(dados);
+            dados = await retorno.json();           
+            dados = dados[0].res; 
+            gerarPaginacao();           
+            preencherTabela(1);
             
 
         }
         buscarNomes();
 
-        function preencherTabela(dados){
-            dados = dados[0].res;
+        function preencherTabela(pagina){
+            // dados = dados[0].res;
             let tb = '';
-            for (info of dados) {
+            let inicioPagina = (pagina - 1) * nLinhas;
+            let fimpagina = (pagina * nLinhas) - 1;
+            console.log(fimpagina);
+            console.log(dados.length);
+
+            if(fimpagina >= dados.length) fimpagina = dados.length - 1;
+            for (i = inicioPagina; i <= fimpagina; i++) {
+                let info = dados[i];
                 tb += `<tr>
                          <td>${info.ranking}</td>
                          <td>${info.nome}</td>
@@ -65,9 +77,21 @@
                       </tr>`;
                 
             }
-            // console.log(tb);
+            // console.log(20);
             dadosInfo.innerHTML = tb;
 
+        }
+
+        function gerarPaginacao(){
+            let qtPagina = Math.ceil(dados.length/ nLinhas);
+            let paginacao = `<li class="page-item" onclick="preencherTabela(1)"><a class="page-link" href="#">Inicio</a></li>`;
+            for (i = 1; i <= qtPagina; i++) {
+                paginacao += `<li class="page-item" onclick="preencherTabela(${i})"><a class="page-link" href="#">${i}</a></li>`;
+            }
+
+            paginacao += `<li class="page-item" onclick="preencherTabela(${qtPagina})"><a class="page-link" href="#">fim</a></li>`;
+            document.getElementById('paginacao').innerHTML = paginacao;
+            
         }
        
 
