@@ -10,7 +10,8 @@ let tpStatus = {
 }
 
 function gravar() {
-    let indice = document.getElementById('indice').value;
+    let indice = document.getElementById('_lineNumber').value;
+    let indice = document.getElementById('').value;
     let item = document.getElementById('item').value;
     let status = document.getElementById('status').value;
     if (item != '' && status != '') {
@@ -18,8 +19,13 @@ function gravar() {
         obj.item = item;
         obj.status = status;
         if (indice == "") {
+            createRow(obj).then((o) => {
+              lsItem.push(o);
+              ataulizarTabela();
+            });
             lsItem.push(obj);
         } else {
+            patchRow(obj).then(o) =>
             lsItem[indice] = obj;
         }
         console.table(lsItem);
@@ -47,6 +53,7 @@ function ataulizarTabela() {
 
 function limparForm() {
     document.getElementById('indice').value = "";
+    document.getElementById('_lineNumber').value = "";
     document.getElementById('item').value = "";
     document.getElementById('status').value = "";
 }
@@ -54,12 +61,14 @@ function limparForm() {
 function editar(indice) {
     obj = lsItem[indice];
     document.getElementById('indice').value = indice;
+    document.getElementById('_lineNumber').value = "";
     document.getElementById('item').value = obj.item;
     document.getElementById('status').value = obj.status;
 }
 
 function apagar() {
     let indice = document.getElementById('indice').value;
+    document.getElementById('_lineNumber').value = "";
     if (indice != "") {
         lsItem.splice(indice, 1);
         ataulizarTabela();
@@ -69,10 +78,56 @@ function apagar() {
     }
 }
 
-lsItem = JSON.parse(localStorage.getItem("lsItem"));
-if(lsItem == null){
-    localStorage.setItem("lsItem","[]");
-    lsItem = [];
+async function getData() {
+    const response = await fetch("https://api.zerosheets.com/v1/fh6");
+    const data = await response.json();
+
+    // will return an array of objects with the _lineNumber
+    return data;
 }
 
-ataulizarTabela();
+async function createRow(payload) {
+    /* Payload should be an object with the columns you want to create, example:
+    const payload = {
+        column1: "foo",
+        column2: "bar"
+    };
+    */
+    const response = await fetch("https://api.zerosheets.com/v1/fh6", {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+    const data = await response.json();
+  
+    return data;
+}
+
+async function patchRow(lineNumber, payload) {
+    /* Payload should be an object with the columns you want to update, example:
+
+    const payload = {
+        foo: "bar"
+    };
+    */
+    const url = "https://api.zerosheets.com/v1/fh6/" + lineNumber;
+    const response = await fetch(url, {
+      method: "PATCH",
+      body: JSON.stringify(payload)
+    });
+    const data = await response.json();
+    
+    // will return an object of the new row plus the _lineNumber
+    return data;
+}
+async function deleteRow(lineNumber) {
+    const url = "https://api.zerosheets.com/v1/fh6/" + lineNumber; // lineNumber comes from the get request
+    await fetch(url, {
+        method: "DELETE"
+    });
+    // No response data is returned
+}
+
+getData().then( (ls) => {
+   lsItem =ls;
+   ataulizarTabela();
+});
