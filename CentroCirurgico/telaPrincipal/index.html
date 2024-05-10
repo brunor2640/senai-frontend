@@ -14,11 +14,12 @@
 <body>
     <div class="container-md md-4">
         <h1>Gerenciar Painel dos Pacientes no Centro Cirúrgico</h1>
-        <div class="row"> <input type="hidden" id="indice" value="">
+        <div class="row">
+             <input type="hidden" id="indice" value="">
             <input type="hidden" id="_lineNumber" value="">
             <div class="col-md-6">
-                <label for="nomePaciente" class="form-label">Nome do Paciente:</label>
-                <input type="text" id="nomePaciente" name="nomePaciente" class="form-control"
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" id="nome" name="nome" class="form-control"
                     placeholder="Nome do Paciente" required>
             </div>
             <div class="col-md-3">
@@ -64,7 +65,11 @@
                     <th class="col-4">
                         Nome do paciente
                     </th>
-                    <th class="col-3"> Status </th>
+                    <th> 
+                        Status </th>
+                    <th>
+                        Local
+                    </th>
                     <th>
                         Inicio previsto
                     </th>
@@ -88,7 +93,7 @@
             </tbody>
         </table>
     </div>
-    <!-- <script src="scripts/script.js"></script> -->
+    <script src="/CentroCirurgico/script.js"></script>
 </body>
 
 </html>
