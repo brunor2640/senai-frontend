@@ -15,10 +15,21 @@ function gravar() {
     let nome = document.getElementById('nome').value;
     let status = document.getElementById('status').value;
     let local = document.getElementById('local').value;
+    let inicioPrevisto = document.getElementById('inicioPrevisto').value;
+    let inicioCirurgia = document.getElementById('inicioCirurgia').value;
+    let fimCirurgia = document.getElementById('fimCirurgia').value;
+    let saidaPrevista = document.getElementById('saidaPrevista').value;
+    
     if (nome != '' && status != '') {
         let obj = {};
         obj.nome = nome;
         obj.status = status;
+        obj.local = local;
+        obj.inicioPrevisto = inicioPrevisto;
+        obj.inicioCirurgia = inicioCirurgia;
+        obj.fimCirurgia = fimCirurgia;
+        obj.saidaPrevista = saidaPrevista;
+
         if (indice == "") {
             createRow(obj).then((o) => {
                 lista.push(o);
@@ -48,6 +59,11 @@ function ataulizarTabela() {
                 tbody += `<tr onclick='editar(${i})'>
                 <td>${obj.nome} </td>
                 <td class="${tpStatus[obj.status]}">${obj.status}</td>
+                <td>${obj.local} </td>
+                <td>${obj.inicioPrevisto} </td>
+                <td>${obj.inicioCirurgia} </td>
+                <td>${obj.fimCirurgia} </td>
+                <td>${obj.saidaPrevista} </td>
                 </tr>`;
             }
             i++;
@@ -63,6 +79,11 @@ function limparForm() {
     document.getElementById('_lineNumber').value = "";
     document.getElementById('nome').value = "";
     document.getElementById('status').value = "";
+    document.getElementById('local').value = "";
+    document.getElementById('inicioPrevisto').value = "";
+    document.getElementById('inicioCirurgia').value = "";
+    document.getElementById('fimCirurgia').value = "";
+    document.getElementById('saidaPrevista').value = "";
 }
 
 function editar(indice) {
@@ -71,11 +92,17 @@ function editar(indice) {
     document.getElementById('_lineNumber').value = obj._lineNumber;
     document.getElementById('nome').value = obj.nome;
     document.getElementById('status').value = obj.status;
+    document.getElementById('local').value = obj.local;
+    document.getElementById('inicioPrevisto').value = obj.inicioPrevisto;
+    document.getElementById('inicioCirurgia').value = obj.inicioCirurgia;
+    document.getElementById('fimCirurgia').value = obj.fimCirurgia;
+    document.getElementById('saidaPrevista').value = obj.saidaPrevista;
 }
 
 function apagar() {
     let indice = document.getElementById('indice').value;
     let _lineNumber = document.getElementById('_lineNumber').value;
+    
     if (indice != "") {
         deleteRow(_lineNumber).then(() =>{
             lista.splice(indice, 1);
