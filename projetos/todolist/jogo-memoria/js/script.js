@@ -17,12 +17,13 @@ for (const b of lsBloco) {
     });
     icon = lsEmoticons.splice(sortear(),1); 
     blocos[`id${id}`] = icon;
+    b.id = `id${id}`;
     id++;
     
 }
 
 function mostrar(b){
-    b.innerHTML = "😎";
+    b.innerHTML = blocos[b.id];
 }
 
 function sortear(){
