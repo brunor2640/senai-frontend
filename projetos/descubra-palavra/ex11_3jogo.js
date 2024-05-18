@@ -38,25 +38,20 @@ window.addEventListener("load", () => {
     respPalavra.innerText = novaPalavra; // exibe a novaPalavra
 });
 
-frm.btVerDica.addEventList("click", () => {
-    //Verificar se o jogador já clicou anteriomente no botão 
+frm.btVerDica.addEventListener("click", () => {
+    // verifica se o jogador já clicou anteriormente no botão
     if (respErros.innerText.includes("*")) {
         alert("Você já solicitou a dica...");
-        frm.inLetras.focus();
+        frm.inLetra.focus();
         return;
     }
-
-    respDicas.innerText = "*" + dicaSorteada; //exibe a dica
-    respErros.innerText += "*"; //acresenta "*" nos erros
-
-    const chances = Number(respChances.innerText) - 1; //diminuir 1 em chances
-    respChances.innerText = chances; //mostrar o n de chances
-
-    trocarStatus(chances); //trocar imagem
-
-    VerificarFim(); //verificar se atingiu  o limite de chances
-
-    frm.inLetras.focus(); //joga o foco em inLetra
+    respDica.innerText = " * " + dicaSorteada; // exibe a dica
+    respErros.innerText += "*"; // acrescenta "*" nos erros
+    const chances = Number(respChances.innerText) - 1; // diminui 1 em chances
+    respChances.innerText = chances; // mostra o no de chances
+    trocarStatus(chances); // troca a imagem
+    verificarFim(); // verifica se atingiu limite de chances
+    frm.inLetra.focus(); // joga o foco em inLetra
 });
 
 const trocarStatus = (num) => {
@@ -65,7 +60,6 @@ const trocarStatus = (num) => {
 
 frm.addEventListener("submit", e => {
     e.preventDefault(); // evita envio do form
-
     const letra = frm.inLetra.value.toUpperCase(); // obtém o conteúdo do campo inLetra
     let erros = respErros.innerText; // obtém o conteúdo dos elementos da página
     let palavra = respPalavra.innerText;
@@ -77,10 +71,8 @@ frm.addEventListener("submit", e => {
     }
     // se letra consta em palavraSorteada
     if (palavraSorteada.includes(letra)) {
-
         let novaPalavra = ""; // para compor novaPalavra
-        // for para montar palavra a ser exibida 
-
+        // for para montar palavra a ser exibida
         for (let i = 0; i < palavraSorteada.length; i++) {
             // se igual a letra apostada, acrescenta esta letra na exibição
             if (palavraSorteada.charAt(i) == letra) {
@@ -88,7 +80,6 @@ frm.addEventListener("submit", e => {
             } else {
                 novaPalavra += palavra.charAt(i); // senão, acrescenta letra ou "_" existente
             }
-
         }
         respPalavra.innerText = novaPalavra; // exibe a novaPalavra
     } else {
