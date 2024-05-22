@@ -23,3 +23,14 @@ for(const p of produtos){
  </div>
  `;
 }
+
+let telaCarrinho = document.querySelector('.tela-carrinho');
+let continuar = document.querySelector('.continuar');
+continuar.addEventListener('click', ()=>{
+     telaCarrinho.classList.toggle('ocutar-tela-carrinho');
+})
+
+let compras = document.querySelector('.compras');
+compras.addEventListener('click', ()=>{
+     telaCarrinho.classList.toggle('ocutar-tela-carrinho');
+})
