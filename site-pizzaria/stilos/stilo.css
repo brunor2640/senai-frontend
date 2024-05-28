@@ -467,6 +467,14 @@ footer{
     .contentsobre p{
         width: 90%;
     }
+
+    .btn{
+        width: 100%;
+    }
+
+    .first-section .conteudo-princial{
+        width: 100%;
+    }
     
 }
 
@@ -477,15 +485,15 @@ footer{
     top: 0;
     left: 0;
     background-color: #1f1e1f;
+    color: #ffc506;
+    justify-content: center;
 }
 
 .ocutar-tela-carrinho{
     display: none;
 }
 
-.tela-carrinho{
-    color: #ffc506;
-}
+
 .tela-carrinho h2{
     font-size: 3rem;
 }
@@ -497,12 +505,16 @@ footer{
     font-size: 1.8rem;
 }
 .tela-carrinho table{
-    width: 80%;
+    width: 100%;
 }
 
 .tela-carrinho td{
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     border-bottom: 1px solid #ffc506;
+}
+.tela-carrinho p{
+    font-size: 1.8rem;
+    margin-top: 10px;
 }
 
 .tela-carrinho button{
@@ -513,9 +525,20 @@ footer{
     border-radius: 5px;
     margin-top: 10px;
     cursor: pointer;
+    font-size: 1.8rem;
+    font-size: bold;
+
 }
 
 .tela-carrinho .bi{
     cursor: pointer;
 }
 
+.content-carrinho{
+    width: 90%;
+    margin-top: 10px;
+}
+.itens-cardapio .info button.selecionar{
+    color: #ffffff;
+    background-color: #333333;
+}

@@ -42,7 +42,15 @@ let lsPedido = document.querySelectorAll('.pedir');
 for (const bt of lsPedido) {
      bt.addEventListener('click', ()=>{
          let id = bt.id.replace('id', '');
+         bt.classList.toggle('selecionar');
          produtos[id].quantidade = 1;
+         if(bt.innerHTML == 'REMOVER'){
+            produtos[id].quantidade = 0;
+            bt.innerHTML = 'pedir agora'
+         }else{
+              produtos[id].quantidade = 1;
+              bt.innerHTML = 'REMOVER'
+         }
          atualizarTabela();
      });
      
@@ -59,7 +67,7 @@ function atualizarTabela(){
                tbody.innerHTML += `
                <tr>
                <td>${p.nome}</td>
-               <td>${p.quantidade}x${p.fatias8}=${p.quantidade*p.fatias8}(8 fatias)</td>
+               <td>${p.quantidade}x${p.fatias8} = R$${p.quantidade*p.fatias8}(8 fatias)</td>
                <td>
                    <i class="bi bi-plus-square-fill" id="plus${id}"></i>
                    <i class="bi bi-dash-square-fill" id="dash${id}"></i>
@@ -83,6 +91,9 @@ function atualizarPlusDash(tipo) {
          }
          if(tipo == 'dash'){
               produtos[id].quantidade--;
+              if( produtos[id].quantidade < 1){
+                   document.getElementById('id' +id).click();
+              }
          }
          atualizarTabela();
           });
