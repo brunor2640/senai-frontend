@@ -38,7 +38,7 @@ let produtos = [
     {
         img: "img/cerveja-budweiser-long-neck330ml.png",
         dsImg: "cerveja budweiser long",
-        nome: "budwiser long neck 330ml",
+        nome: "budwiser long neck",
         valor: 5.49
     },
     {
@@ -46,4 +46,13 @@ let produtos = [
         dsImg: "cerveja antartica",
         nome: "antartica",
         valor: 3.49
+    },
+    {
+        img: "img/cerveja-brahma-puro-malte-lata350ml.png",
+        dsImg: "cerveja brahma",
+        nome: "brahma",
+        valor: 3.89
+      
     }]
+
+  

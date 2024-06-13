@@ -191,7 +191,7 @@ html {
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
-    width: 300px;
+    width: 250px;
 }
 
 .itens-cardapio .info h3 {
@@ -209,7 +209,7 @@ html {
     justify-content: center;
     align-items: center;
     grid-template-columns: 150px 150px;
-    margin-left: 6rem;
+    margin-left: 6rem; 
 }
 
 .itens-cardapio .info h4 span{
