@@ -3,7 +3,7 @@ let produtos = [
         img: "img/absolut.png", 
         dsImg: "vodka absolut",
         nome: "vodka Absolut 1L",
-        valor: 99.00
+        valor: 99.99
     },
     {
         img: "img/whisk-johnnie-walker-black-label.png",

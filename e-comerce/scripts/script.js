@@ -17,7 +17,6 @@ for (const p of produtos) {
         <div class="info">
             <h3>${p.nome}</h3>
             <h4>valor <span>R$${p.valor}</span></h4>
-
             <button id="id${id}" class="pedir">Comprar</button>
         </div>
     </div>
@@ -44,7 +43,7 @@ for (const bt of lsPedido) {
         bt.classList.toggle('selecionado');
         if(bt.innerHTML == 'REMOVER'){
             produtos[id].quantidade = 0;
-            bt.innerHTML = 'pedir agora';
+            bt.innerHTML = 'comprar';
         }else{
             produtos[id].quantidade = 1;
             bt.innerHTML = 'REMOVER';

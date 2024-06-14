@@ -172,11 +172,12 @@ html {
 
 .itens-cardapio {
     width: 80%;
+    height: 100%;
     max-width: 300px;
     margin-top: 2rem;
     margin-bottom: 2rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
     gap: 30px;
@@ -192,6 +193,7 @@ html {
     justify-content: center;
     padding: 1.5rem;
     width: 250px;
+    
 }
 
 .itens-cardapio .info h3 {
@@ -327,7 +329,7 @@ html {
 }
 
 .contatos-secao div:hover{
-    color: #ffc506;
+    color: #4806ff;
 }
 
 footer {
